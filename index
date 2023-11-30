@@ -1,0 +1,11 @@
+from cryptography.fernet import Fernet
+
+key = Fernet.generate_key()
+cipher_suite = Fernet(key)
+
+with open('example.txt', 'rb') as file:
+    data = file.read()
+
+encrypted_data = cipher_suite.encrypt(data)
+with open('encrypted.txt', 'wb') as file:
+    file.write(encrypted_data)
